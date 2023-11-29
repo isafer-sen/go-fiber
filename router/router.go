@@ -2,6 +2,7 @@ package router
 
 import (
 	"app/core/controller"
+	"app/core/service"
 	"github.com/gofiber/fiber/v2"
 )
 
@@ -12,5 +13,9 @@ func RegisterRouter(app *fiber.App) {
 	app.Get("/cache", u.Cache)
 	app.Get("/json", u.Json)
 
-	app.Get("/ws/:id", controller.WS())
+	app.Get("/ws/:id", service.WsConnect())
+
+	wsc := new(controller.WsController)
+	app.Get("/wss/send", wsc.SendMsg)
+
 }
