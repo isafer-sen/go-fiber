@@ -13,6 +13,7 @@ func RegisterRouter(app *fiber.App) {
 	app.Get("/cache", u.Cache)
 	app.Get("/json", u.Json)
 
+	//app.Get("/ws/:id", service.WsConnect())
 	app.Get("/ws/:id", service.WsConnect())
 
 	wsc := new(controller.WsController)

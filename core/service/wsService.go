@@ -11,8 +11,6 @@ var clients []*websocket.Conn
 func WsConnect() fiber.Handler {
 	return websocket.New(func(c *websocket.Conn) {
 		clients = append(clients, c)
-
-		log.Println("xx_client:", clients)
 		// c.Locals are added to the *websocket.Conn
 		//log.Println(c.Locals("allowed"))  // true
 		//log.Println(c.Params("id"))       // 123
@@ -23,14 +21,10 @@ func WsConnect() fiber.Handler {
 			for i, client := range clients {
 				if client == c {
 					clients = append(clients[:i], clients[i+1:]...)
-					log.Println("Client disconnected. Number of clients:", len(clients))
 					break
 				}
 			}
 		}()
-
-		log.Println("Number of clients:", len(clients)) // 添加日志输出，以便更好地理解代码的执行过程
-
 		var (
 			mt  int
 			msg []byte
