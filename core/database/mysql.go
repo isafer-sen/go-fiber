@@ -5,7 +5,6 @@ import (
 	"database/sql"
 	"gorm.io/driver/mysql"
 	"gorm.io/gorm"
-	"gorm.io/gorm/logger"
 	"log"
 	"time"
 )
@@ -18,7 +17,7 @@ func SetupDB() {
 		DriverName: config.DriverName,
 		DSN:        config.DSN,
 	}), &gorm.Config{
-		Logger: logger.Default.LogMode(logger.Info),
+		//Logger: logger.Default.LogMode(logger.Info),
 	})
 	// 处理错误
 	if err != nil {

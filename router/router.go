@@ -19,4 +19,11 @@ func RegisterRouter(app *fiber.App) {
 	wsc := new(controller.WsController)
 	app.Get("/wss/send", wsc.SendMsg)
 
+	// 设备管理
+	dev := new(controller.DeviceController)
+	app.Get("/device", dev.Index)
+
+	// 上传文件
+	up := new(controller.UploadController)
+	app.Post("/upload", up.Upload)
 }
