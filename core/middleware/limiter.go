@@ -8,9 +8,8 @@ import (
 
 func Limiter() fiber.Handler {
 	// 创建一个限速器，限制每秒最多处理10个请求，过期时间为10秒
-	limiterConfig := limiter.Config{
+	return limiter.New(limiter.Config{
 		Max:        10,
 		Expiration: 10 * time.Second,
-	}
-	return limiter.New(limiterConfig)
+	})
 }
