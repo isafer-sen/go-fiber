@@ -2,15 +2,15 @@ package main
 
 import (
 	"app/config"
-	"app/core/database"
+	"app/db"
 	"app/router"
 	"github.com/gofiber/fiber/v2"
 	"log"
 )
 
 func main() {
-	database.SetupDB()
-	database.SetupRedis()
+	db.SetupDB()
+	db.SetupRedis()
 	app := fiber.New()
 	router.RegisterRouter(app)
 	if err := app.Listen(config.Port); err != nil {
