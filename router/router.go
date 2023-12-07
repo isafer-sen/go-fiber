@@ -2,11 +2,16 @@ package router
 
 import (
 	"app/core/controller"
+	"app/core/middleware"
 	"app/core/service"
 	"github.com/gofiber/fiber/v2"
 )
 
 func RegisterRouter(app *fiber.App) {
+
+	//设置api限速
+	app.Use(middleware.Limiter())
+
 	//app.Use(logger.New())
 	u := new(controller.UserController)
 	app.Get("/index", u.Index)

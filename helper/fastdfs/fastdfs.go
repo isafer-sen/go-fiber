@@ -13,7 +13,7 @@ type FileInfo struct {
 	Md5     string `json:"md5"`
 	Path    string `json:"path"`
 	Retcode int    `json:"retcode"`
-	Retmsg  string `json:"retmsg"`
+	Retsg   string `json:"retmsg"`
 	Scene   string `json:"scene"`
 	Scenes  string `json:"scenes"`
 	Src     string `json:"src"`
